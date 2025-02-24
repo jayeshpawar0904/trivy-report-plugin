@@ -1,31 +1,112 @@
-.severity-critical { background-color: #ff4444; color: white; }
-.severity-high { background-color: #ff6b6b; color: white; }
-.severity-medium { background-color: #ffd93d; }
-.severity-low { background-color: #6bcbff; }
+/* Professional Font & Layout */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+}
 
-.chart-bar {
-    height: 25px;
-    margin: 5px 0;
-    padding: 5px;
-    border-radius: 4px;
-    text-align: right;
+/* Report Title */
+.report-title {
+    text-align: center;
+    font-size: 26px;
     font-weight: bold;
-    transition: width 0.3s ease;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
-.pane {
+/* No Vulnerabilities Message */
+.no-vulns {
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    color: #27ae60;
+    background: #eafaf1;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+}
+
+/* Severity Summary Table */
+.severity-summary {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.summary-table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
+    margin-top: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.pane th {
-    background-color: #f0f0f0;
-    padding: 10px;
+.summary-table th, .summary-table td {
+    padding: 12px;
     text-align: left;
-}
-
-.pane td {
-    padding: 8px;
     border-bottom: 1px solid #ddd;
 }
+
+.summary-table th {
+    background: #34495e;
+    color: white;
+}
+
+.summary-table td {
+    font-size: 16px;
+}
+
+/* Badges for Severity */
+.badge {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    color: white;
+}
+
+.badge-high { background-color: #e74c3c; } /* Red */
+.badge-medium { background-color: #f39c12; } /* Orange */
+.badge-low { background-color: #27ae60; } /* Green */
+.badge-unknown { background-color: #7f8c8d; } /* Gray */
+
+/* Vulnerability Table */
+.vuln-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.vuln-table th, .vuln-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.vuln-table th {
+    background: #2c3e50;
+    color: white;
+    font-size: 16px;
+}
+
+.vuln-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Hover effect */
+.vuln-table tr:hover {
+    background: #f1f1f1;
+}
+
+/* Severity Row Colors */
+.severity-high { background-color: #ffebee; }
+.severity-medium { background-color: #fff3e0; }
+.severity-low { background-color: #e8f5e9; }
+.severity-unknown { background-color: #eceff1; }

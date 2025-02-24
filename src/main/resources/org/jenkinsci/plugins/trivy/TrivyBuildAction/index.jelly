@@ -5,27 +5,37 @@
         <l:main-panel>
             <link rel="stylesheet" type="text/css" href="${resURL}/plugin/trivy-report-plugin/css/style.css"/>
             
-            <h1>Trivy Security Report</h1>
-            
+            <h1 class="report-title">🔍 Trivy Security Report</h1>
+
             <j:choose>
                 <j:when test="${empty it.vulnerabilities}">
-                    <div class="alert">No vulnerabilities found</div>
+                    <div class="alert no-vulns">✅ No vulnerabilities found</div>
                 </j:when>
                 <j:otherwise>
-                   
-    <div class="severity-counts">
-        <ul>
-            <j:forEach var="entry" items="${it.severityCounts}">
-                <li class="severity-${entry.key.toLowerCase()}">
-                    ${entry.key}: ${entry.value}
-                </li>
-            </j:forEach>
-        </ul>
-    </div>
+                    <!-- Vulnerability Summary Section -->
+                    <div class="severity-summary">
+                        <h2>🛡️ Vulnerability Summary</h2>
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>Severity</th>
+                                    <th>Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <j:forEach var="entry" items="${it.severityCounts}">
+                                    <tr class="severity-${entry.key.toLowerCase()}">
+                                        <td><span class="badge badge-${entry.key.toLowerCase()}">${entry.key}</span></td>
+                                        <td>${entry.value} issues</td>
+                                    </tr>
+                                </j:forEach>
+                            </tbody>
+                        </table>
+                    </div>
 
-
-                    
-                    <table class="pane sortable">
+                    <!-- Vulnerabilities Table -->
+                    <h2>📜 Detailed Report</h2>
+                    <table class="vuln-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -38,7 +48,7 @@
                             <j:forEach var="vuln" items="${it.vulnerabilities}">
                                 <tr class="severity-${vuln.severity.toLowerCase()}">
                                     <td><a href="${vuln.primaryUrl}" target="_blank">${vuln.vulnerabilityID}</a></td>
-                                    <td>${vuln.severity}</td>
+                                    <td><span class="badge badge-${vuln.severity.toLowerCase()}">${vuln.severity}</span></td>
                                     <td>${vuln.pkgName}</td>
                                     <td>${vuln.description}</td>
                                 </tr>
