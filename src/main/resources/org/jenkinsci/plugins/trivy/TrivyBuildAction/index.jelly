@@ -1,0 +1,52 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:st="jelly:stapler">
+    <l:layout title="${it.displayName}">
+        <st:include page="sidepanel.jelly" it="${it.run}"/>
+        <l:main-panel>
+            <link rel="stylesheet" type="text/css" href="${resURL}/plugin/trivy-report-plugin/css/style.css"/>
+            
+            <h1>Trivy Security Report</h1>
+            
+            <j:choose>
+                <j:when test="${empty it.vulnerabilities}">
+                    <div class="alert">No vulnerabilities found</div>
+                </j:when>
+                <j:otherwise>
+                   
+    <div class="severity-counts">
+        <ul>
+            <j:forEach var="entry" items="${it.severityCounts}">
+                <li class="severity-${entry.key.toLowerCase()}">
+                    ${entry.key}: ${entry.value}
+                </li>
+            </j:forEach>
+        </ul>
+    </div>
+
+
+                    
+                    <table class="pane sortable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Severity</th>
+                                <th>Package</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <j:forEach var="vuln" items="${it.vulnerabilities}">
+                                <tr class="severity-${vuln.severity.toLowerCase()}">
+                                    <td><a href="${vuln.primaryUrl}" target="_blank">${vuln.vulnerabilityID}</a></td>
+                                    <td>${vuln.severity}</td>
+                                    <td>${vuln.pkgName}</td>
+                                    <td>${vuln.description}</td>
+                                </tr>
+                            </j:forEach>
+                        </tbody>
+                    </table>
+                </j:otherwise>
+            </j:choose>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>

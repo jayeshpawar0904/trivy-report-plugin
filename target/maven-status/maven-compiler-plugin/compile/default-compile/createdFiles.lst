@@ -1,0 +1,9 @@
+org/jenkinsci/plugins/trivy/TrivyBuildAction.class
+META-INF/annotations/hudson.Extension.txt
+org/jenkinsci/plugins/trivy/TrivyPublisher$DescriptorImpl.class
+org/jenkinsci/plugins/trivy/TrivyPublisher.stapler
+org/jenkinsci/plugins/trivy/TrivyVulnerability.class
+org/jenkinsci/plugins/trivy/TrivyPublisher.class
+org/jenkinsci/plugins/trivy/TrivyReportParser.class
+META-INF/services/annotations/org.jenkinsci.Symbol
+META-INF/annotations/hudson.Extension

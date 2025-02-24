@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    This plugin parses Trivy vulnerability reports and displays them in Jenkins UI.
+</div>

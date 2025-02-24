@@ -1,0 +1,4 @@
+/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/src/main/java/org/jenkinsci/plugins/trivy/TrivyVulnerability.java
+/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/src/main/java/org/jenkinsci/plugins/trivy/TrivyReportParser.java
+/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/src/main/java/org/jenkinsci/plugins/trivy/TrivyBuildAction.java
+/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/src/main/java/org/jenkinsci/plugins/trivy/TrivyPublisher.java

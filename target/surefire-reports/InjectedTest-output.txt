@@ -1,0 +1,67 @@
+Running tests for org.jenkins-ci.plugins:trivy-report-plugin:1.0.0-1
+Feb 24, 2025 1:26:53 PM org.eclipse.jetty.util.log.Log initialized
+INFO: Logging initialized @182ms to org.eclipse.jetty.util.log.Slf4jLog
+Feb 24, 2025 1:26:53 PM org.jvnet.hudson.test.WarExploder explode
+INFO: Exploding /Users/jayeshpawar/.m2/repository/org/jenkins-ci/main/jenkins-war/2.346.1/jenkins-war-2.346.1.war into /Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/target/jenkins-for-test
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.handler.ContextHandler setContextPath
+WARNING: Empty contextPath
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.Server doStart
+INFO: jetty-9.4.46.v20220331; built: 2022-03-31T16:38:08.030Z; git: bc17a0369a11ecf40bb92c839b9ef0a8ac50ea18; jvm 17.0.14+7-LTS
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
+INFO: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: DefaultSessionIdManager workerName=node0
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: No SessionScavenger set, using defaults
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: node0 Scavenging every 660000ms
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started o.e.j.w.WebAppContext@4303b7f0{Jenkins v2.346.1,/,file:///Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/target/jenkins-for-test/,AVAILABLE}{/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/target/jenkins-for-test}
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@1db0ec27{HTTP/1.1, (http/1.1)}{localhost:55036}
+Feb 24, 2025 1:26:54 PM org.eclipse.jetty.server.Server doStart
+INFO: Started @1640ms
+Feb 24, 2025 1:26:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Started initialization
+Feb 24, 2025 1:26:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Listed all plugins
+Feb 24, 2025 1:26:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Prepared all plugins
+Feb 24, 2025 1:26:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Started all plugins
+Feb 24, 2025 1:26:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Augmented all extensions
+Feb 24, 2025 1:26:55 PM jenkins.InitReactorRunner$1 onAttained
+INFO: System config loaded
+Feb 24, 2025 1:26:55 PM jenkins.InitReactorRunner$1 onAttained
+INFO: System config adapted
+Feb 24, 2025 1:26:55 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Loaded all jobs
+Feb 24, 2025 1:26:55 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Configuration for all jobs updated
+Feb 24, 2025 1:26:55 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Completed initialization
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.Server doStart
+INFO: jetty-9.4.46.v20220331; built: 2022-03-31T16:38:08.030Z; git: bc17a0369a11ecf40bb92c839b9ef0a8ac50ea18; jvm 17.0.14+7-LTS
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: DefaultSessionIdManager workerName=node0
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: No SessionScavenger set, using defaults
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: node0 Scavenging every 660000ms
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started o.e.j.s.ServletContextHandler@7e94d093{/,null,AVAILABLE}
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@4248e66b{HTTP/1.1, (http/1.1)}{0.0.0.0:55040}
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.Server doStart
+INFO: Started @2268ms
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.AbstractConnector doStop
+INFO: Stopped ServerConnector@1db0ec27{HTTP/1.1, (http/1.1)}{localhost:0}
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.session.HouseKeeper stopScavenging
+INFO: node0 Stopped scavenging
+Feb 24, 2025 1:26:55 PM org.eclipse.jetty.server.handler.ContextHandler doStop
+INFO: Stopped o.e.j.w.WebAppContext@4303b7f0{Jenkins v2.346.1,/,file:///Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/target/jenkins-for-test/,STOPPED}{/Users/jayeshpawar/bits-wilp/jpawar-work/trivy-plugin/target/jenkins-for-test}
+Feb 24, 2025 1:26:55 PM hudson.lifecycle.Lifecycle onStatusUpdate
+INFO: Stopping Jenkins
+Feb 24, 2025 1:26:55 PM hudson.lifecycle.Lifecycle onStatusUpdate
+INFO: Jenkins stopped

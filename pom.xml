@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>4.40</version>  <!-- Updated to a valid version -->
+    </parent>
+
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>trivy-report-plugin</artifactId>
+    <version>1.0.0-1</version>
+    <packaging>hpi</packaging>
+    <name>Trivy Report Plugin</name>
+
+    <properties>
+        <jenkins.version>2.346.1</jenkins.version>
+        <java.level>8</java.level>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.4</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Add Jenkins repository configuration -->
+    <repositories>
+        <repository>
+            <id>jenkins-ci</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jenkins-ci</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.jelly</include>  <!-- Includes all Jelly files -->
+                <include>**/*.properties</include>  <!-- Include property files if any -->
+            </includes>
+        </resource>
+        <resource>
+            <directory>src/main/webapp</directory>
+            <includes>
+                <include>**/*.css</include>  <!-- Include CSS files -->
+                <include>**/*.js</include>  <!-- Include JavaScript files -->
+                <include>**/*.png</include>  <!-- Include images/icons -->
+            </includes>
+            <targetPath>plugin/trivy-report-plugin</targetPath>  <!-- Make them accessible in the plugin -->
+        </resource>
+    </resources>
+</build>
+
+</project>

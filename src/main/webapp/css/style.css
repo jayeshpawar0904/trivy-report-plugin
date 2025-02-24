@@ -1,0 +1,31 @@
+.severity-critical { background-color: #ff4444; color: white; }
+.severity-high { background-color: #ff6b6b; color: white; }
+.severity-medium { background-color: #ffd93d; }
+.severity-low { background-color: #6bcbff; }
+
+.chart-bar {
+    height: 25px;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: right;
+    font-weight: bold;
+    transition: width 0.3s ease;
+}
+
+.pane {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.pane th {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: left;
+}
+
+.pane td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
