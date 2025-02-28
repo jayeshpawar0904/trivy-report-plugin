@@ -3,20 +3,23 @@ package org.jenkinsci.plugins.trivy;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
-import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.model.BuildListener;
+import hudson.model.Run;
+import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Publisher;
 import hudson.tasks.Recorder;
+import jenkins.tasks.SimpleBuildStep;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
+import org.kohsuke.stapler.StaplerRequest;
+import net.sf.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class TrivyPublisher extends Recorder {
+public class TrivyPublisher extends Recorder implements SimpleBuildStep {
     private String reportPath;
 
     @DataBoundConstructor
@@ -34,37 +37,35 @@ public class TrivyPublisher extends Recorder {
     }
 
     @Override
-    public boolean perform(AbstractBuild build, Launcher launcher, BuildListener listener) {
-        try {
-            FilePath workspace = build.getWorkspace();
-            if (workspace == null) {
-                listener.error("No workspace found");
-                return false;
-            }
+    public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener)
+            throws InterruptedException, IOException {
+        listener.getLogger().println("[Trivy] Processing report...");
 
-            FilePath reportFile = workspace.child(reportPath);
-            listener.getLogger().println("[Trivy] Scanning report at: " + reportFile.getRemote());
-
-            if (!reportFile.exists()) {
-                listener.error("Trivy report not found at: " + reportFile.getRemote());
-                return false;
-            }
-
-            File localReport = new File(reportFile.getRemote());
-            List<TrivyVulnerability> vulns = TrivyReportParser.parse(localReport);
-            listener.getLogger().println("[Trivy] Found vulnerabilities: " + vulns.size());
-            
-            build.addAction(new TrivyBuildAction(vulns));
-            return true;
-        } catch (Exception e) {
-            listener.error("Trivy report processing failed: " + e.getMessage());
-            return false;
+        if (workspace == null) {
+            listener.error("No workspace found");
+            return;
         }
+
+        FilePath reportFile = workspace.child(reportPath);
+        if (!reportFile.exists()) {
+            listener.error("Trivy report not found: " + reportFile.getRemote());
+            return;
+        }
+
+        File localReport = new File(reportFile.getRemote());
+        List<TrivyVulnerability> vulns = TrivyReportParser.parse(localReport);
+        listener.getLogger().println("[Trivy] Found vulnerabilities: " + vulns.size());
+
+        run.addAction(new TrivyBuildAction(vulns));
     }
 
-    @Symbol("trivyReport")
+    @Symbol("trivyReport")  // This makes it usable in the Pipeline DSL
     @Extension
     public static class DescriptorImpl extends BuildStepDescriptor<Publisher> {
+        public DescriptorImpl() {
+            super(TrivyPublisher.class);
+        }
+
         @Override
         public boolean isApplicable(Class<? extends AbstractProject> jobType) {
             return true;
@@ -73,6 +74,11 @@ public class TrivyPublisher extends Recorder {
         @Override
         public String getDisplayName() {
             return "Publish Trivy Security Report";
+        }
+
+        @Override
+        public Publisher newInstance(StaplerRequest req, JSONObject formData) throws FormException {
+            return req.bindJSON(TrivyPublisher.class, formData);
         }
     }
 }

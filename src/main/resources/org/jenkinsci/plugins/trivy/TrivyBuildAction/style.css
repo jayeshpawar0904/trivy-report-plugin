@@ -68,6 +68,14 @@ body {
     color: white;
 }
 
+.badge-critical { 
+    background-color: #FF1493 !important; /* Deep Pink */
+    color: white !important;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
 .badge-high { background-color: #e74c3c; } /* Red */
 .badge-medium { background-color: #f39c12; } /* Orange */
 .badge-low { background-color: #27ae60; } /* Green */
@@ -106,7 +114,10 @@ body {
 }
 
 /* Severity Row Colors */
-.severity-high { background-color: #ffebee; }
-.severity-medium { background-color: #fff3e0; }
-.severity-low { background-color: #e8f5e9; }
-.severity-unknown { background-color: #eceff1; }
+.severity-critical { 
+    background-color: #FFD1DC !important; /* Light Pink */
+}
+.severity-high { background-color: #ffebee; } /* Light Red */
+.severity-medium { background-color: #fff3e0; } /* Light Orange */
+.severity-low { background-color: #e8f5e9; } /* Light Green */
+.severity-unknown { background-color: #eceff1; } /* Light Gray */

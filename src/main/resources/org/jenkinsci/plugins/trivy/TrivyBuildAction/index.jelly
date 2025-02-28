@@ -4,7 +4,7 @@
         <st:include page="sidepanel.jelly" it="${it.run}"/>
         <l:main-panel>
             <link rel="stylesheet" type="text/css" href="${resURL}/plugin/trivy-report-plugin/css/style.css"/>
-            
+
             <h1 class="report-title">🔍 Trivy Security Report</h1>
 
             <j:choose>
@@ -33,13 +33,13 @@
                         </table>
                     </div>
 
-                    <!-- Vulnerabilities Table -->
+                    <!-- Vulnerabilities Table with Sorting Feature -->
                     <h2>📜 Detailed Report</h2>
-                    <table class="vuln-table">
+                    <table class="vuln-table" id="vulnTable">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Severity</th>
+                                <th onclick="sortTable()" class="sortable">Severity</th>
                                 <th>Package</th>
                                 <th>Description</th>
                             </tr>
@@ -57,6 +57,32 @@
                     </table>
                 </j:otherwise>
             </j:choose>
+
+            <!-- JavaScript for Sorting -->
+            <script>
+                let sortDirection = true;
+
+                function sortTable() {
+                    let table = document.getElementById("vulnTable");
+                    let tbody = table.getElementsByTagName("tbody")[0];
+                    let rows = Array.from(tbody.getElementsByTagName("tr"));
+
+                    rows.sort((a, b) => {
+                        let severityOrder = { "critical": 4, "high": 3, "medium": 2, "low": 1, "unknown": 0 };
+                        let valA = severityOrder[a.getElementsByTagName("td")[1].innerText.toLowerCase()];
+                        let valB = severityOrder[b.getElementsByTagName("td")[1].innerText.toLowerCase()];
+
+                        return sortDirection ? valB - valA : valA - valB;
+                    });
+
+                    // Toggle sorting order for next click
+                    sortDirection = !sortDirection;
+
+                    // Update table rows
+                    tbody.innerHTML = "";
+                    rows.forEach(row => tbody.appendChild(row));
+                }
+            </script>
         </l:main-panel>
     </l:layout>
 </j:jelly>
